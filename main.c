@@ -1,69 +1,84 @@
 #include <stdio.h>
-#include "functions.h"
-#include "euler.h"
-#define SIZE 2
-int main() {
- /*
-      {
-        int value = 0;
-        int array[SIZE];
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 4
 
-        printf("value = ");
-        scanf_s("%d", &value);
+ GenRandomNum(int RandomNum[SIZE]) 
+ {
+    srand(time(NULL));
 
-        for (unsigned int i = 0; i < SIZE; ++i)
-            scanf_s("%d", &array[i]);
+    RandomNum[0] = rand() % 9 + 1; 
+    for (int i = 1; i < SIZE; i++) 
+    {
+        RandomNum[i] = rand() % 10;
+    }
+}
 
-        printf("%llu\n", Problem_1(value, array, SIZE));
+int Bulls(int RandomNum[SIZE], int guess[SIZE]) 
+{
+    int bulls = 0;
 
-        return 0;
-      }*/
+    for (int i = 0; i < SIZE; i++) 
+    {
+        if (RandomNum[i] == guess[i]) 
+        {
+            bulls++;
+        }
+    }
 
+    return bulls;
+}
 
+int Cows(int RandomNum[SIZE], int guess[SIZE]) 
+{
+    int cows = 0;
 
-    /*
-    int value = 0;
-    printf("value = ");
-    scanf_s("%d", &value);
+    for (int i = 0; i < SIZE; i++) 
+    {
+        for (int j = 0; j < SIZE; j++) 
+        {
+            if (RandomNum[i] == guess[j] && i != j) 
+            {
+                cows++;
+            }
+        }
+    }
 
-    printf("answer = %llu\n", Problem_2(value));
-    */
-    
+    return cows;
+}
 
+int main() 
+{
+    int RandomNum[SIZE];
+    int guess[SIZE];
+    int bulls, cows;
+    int attempts = 0;
 
-   /*
-       long long number = 600851475143;
-       long long largestPrimeDivisor = 1;
+    GenRandomNum(RandomNum);
 
-       for (long long i = 2; i * i <= number; i++) {
-           if (number% i == 0 && Problem_3(i)) {
-               largestPrimeDivisor = i;
-           }
-       }
+    do 
+    {
+        printf("\nTry %d\n", attempts + 1);
 
-       printf("Number:%lld MaxDelPrime = %lld\n", number, largestPrimeDivisor);
+        for (int i = 0; i < SIZE; i++) 
+        {
+            scanf_s("%1d", &guess[i]);
+        }
 
-   }*/
+        bulls = Bulls(RandomNum, guess);
+        cows = Cows(RandomNum, guess);
 
-    /*
-    int largestPalindrom = 0;
-   
-           for (int i = 100; i < 1000; i++)
-           {
-               for (int j = 100; j < 1000; j++)
-               {
-                   int result = i * j;
+        printf("Bulls: %d, Cows: %d\n", bulls, cows);
 
-                   if (Problem_4(result) && result > largestPalindrom)
-                   {
-                       largestPalindrom = result;
-                   }
-               }
-           }
+        attempts++;
+    } while (bulls != SIZE);
 
-           printf("answer: %d\n", largestPalindrom);
-*/
-    
-   
-    printf("%llu\n", Problem_5(20));
+    printf("\nYou won with %d Try.\n", attempts);
+    printf("RandomNum: ");
+    for (int i = 0; i < SIZE; i++) 
+    {
+        printf("%d", RandomNum[i]);
+    }
+
+    return 0;
 }
