@@ -1,6 +1,4 @@
 #include "euler.h"
-#include<math.h>
-#include <stdbool.h>
 unsigned long long int Problem_1(const int value_, const int* multiples_, const unsigned int size_)
 {
     unsigned long long sum = 0;
@@ -21,37 +19,38 @@ unsigned long long int Problem_1(const int value_, const int* multiples_, const 
     return sum;
 }
 
-unsigned long long Problem_2(const unsigned int value_)
+int Problem_2(int limit)
 {
-    unsigned long long sum = 0;
-    unsigned fib1 = 1;
-    unsigned fib2 = 2;
+        int previous = 0;
+        int current = 1;
+        int sum = 0;
+        int temp;
 
-    while (fib2 < value_)
-    {
-        if (fib2 % 2 == 0)
-        {
-            sum += fib2;
+        while (current <= limit) {
+            if (current % 2 == 0) {
+                sum += current;
+            }
+            temp = current;
+            current = previous + current;
+            previous = temp;
         }
 
-        unsigned int prom = fib1;
-        fib1 = fib2;
-        fib2 = fib1 + prom;
+        return sum;
+ }
+
+
+int Problem_3(long long num)
+{
+    if (num < 2) {
+        return 0;
     }
 
-    return sum;
-}
-
-unsigned long long Problem_3(long long num)
-{
-    for (long long i = 2; i * i <= num; i++)
-    {
-        if (num % i == 0)
-        {
+    for (long long i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
             return 0;
-
         }
     }
+
     return 1;
 }
 
@@ -76,23 +75,30 @@ unsigned long long Problem_4(int num)
         }
 }
 
-unsigned long long Problem_5(const unsigned int value_)
+int Problem_5()
 {
-    unsigned int number = 1;
-    while (1)
-    {
-        bool flag = true;
-        for (unsigned int del = 1; del <= value_; ++del)
-        {
-            if (number % del != 0)
-            {
-                flag = false;
+    int number = 1;
+    int isDivisible = 0;
+
+    while (!isDivisible) {
+        int i;
+        for (i = 1; i <= 20; i++) {
+            if (number % i != 0) {
                 break;
             }
         }
-        if (flag)
-            return number;
 
-        number++;
+        if (i > 20) {
+            isDivisible = 1;
+        }
+        else {
+            number++;
+        }
     }
+
+    return number;
 }
+
+
+
+

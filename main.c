@@ -19,33 +19,36 @@ int main() {
         return 0;
       }*/
 
+      /*
+       int limit;
+        printf("Enter a limit for the Fibonacci sequence value: ");
+        scanf_s("%d", &limit);
 
+        int sum = Problem_2(limit);
 
-    /*
-    int value = 0;
-    printf("value = ");
-    scanf_s("%d", &value);
+        printf("The sum of the even terms of the Fibonacci sequence not exceeding %d is: %d\n", limit, sum);
 
-    printf("answer = %llu\n", Problem_2(value));
-    */
+        return 0;
     
-
-
+      */
+       
    /*
-       long long number = 600851475143;
-       long long largestPrimeDivisor = 1;
+    long long number = 600851475143;
+    long long largestPrime = 0;
 
-       for (long long i = 2; i * i <= number; i++) {
-           if (number% i == 0 && Problem_3(i)) {
-               largestPrimeDivisor = i;
-           }
-       }
+    for (long long i = 2; i * i <= number; i++) {
+        if (number % i == 0 && Problem_3(i)) {
+            largestPrime = i;
+        }
+    }
 
-       printf("Number:%lld MaxDelPrime = %lld\n", number, largestPrimeDivisor);
+    printf("Most largest del of number its: %lld", largestPrime);
 
-   }*/
-
-    /*
+    return 0;
+   
+   */
+ 
+   /*
     int largestPalindrom = 0;
    
            for (int i = 100; i < 1000; i++)
@@ -62,8 +65,21 @@ int main() {
            }
 
            printf("answer: %d\n", largestPalindrom);
-*/
     
    
-    printf("%llu\n", Problem_5(20));
+   */
+     
+   
+  
+
+    /*
+  int smallestMultiple = Problem_5();
+    printf("The smallest positive number divisible by all numbers from 1 to 20 is: %d", smallestMultiple);
+    return 0;
+    
+    */
+   
+    
 }
+
+
