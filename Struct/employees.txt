@@ -1,0 +1,4 @@
+Smith John David Manager 5000.00 1930-04-15
+Johnson Lisa Ann Assistant 2500.00 1920-09-23
+Brown Michael James Engineer 4000.00 1942-12-07
+Miller Emily Jane Analyst 3500.00 1234-07-31
