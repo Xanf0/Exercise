@@ -2,26 +2,44 @@
 #define MAX_SIZE 10
 
 /*
-*brief Вычисляет алгебраические дополнения матрицы, исключая определенную строку и столбец
-*param a - Матрица, для которой вычисляется кофактор
-*param temp - Временная матрица для хранения кофакторов
-*param p - Индекс строки для исключения
-*param q - Индекс столбца для исключения
-*param n - Размерность матрицы
-*/
-void solveEquation(float a[][MAX_SIZE], float b[], int n);
+ * @brief Инициализирует расширенную матрицу значениями из оригинальной матрицы.
+ * @param matrix Оригинальная матрица.
+ * @param augmentedMatrix Расширенная матрица.
+ * @param n Размер матрицы.
+ */
+void initializeAugmentedMatrix(double matrix[][MAX_SIZE], double augmentedMatrix[][2 * MAX_SIZE], int n);
 /*
-*brief Вычисляет определитель матрицы
-*param a - Матрица, для которой вычисляется определитель
-*param n - Размерность матрицы
-*return Определитель матрицы 
-*/
-float determinant(float a[][MAX_SIZE], int n);
+ * @brief Проверяет, является ли диагональный элемент равным нулю.
+ * @param augmentedMatrix Расширенная матрица.
+ * @param row Строка, для которой проверяется диагональный элемент.
+ * @return 1, если диагональный элемент равен нулю; 0, если диагональный элемент не равен нулю.
+ */
+int isDiagonalElementZero(double augmentedMatrix[][2 * MAX_SIZE], int row);
 /*
-*brief Решает систему линейных уравнений вида Ax = b
-*param a - Матрица коэффициентов
-*param b - Вектор свободных членов
-*param n - Размерность матрицы
-*/
-void getCofactor(float a[][MAX_SIZE], float temp[][MAX_SIZE], int p, int q, int n);
+ * @brief Выполняет операции над строками в методе Гаусса-Жордана.
+ * @param augmentedMatrix Расширенная матрица.
+ * @param n Размер матрицы.
+ * @param pivotRow Строка, которая является разрешающим элементом.
+ */
+void performRowOperations(double augmentedMatrix[][2 * MAX_SIZE], int n, int pivotRow);
+/*
+ * @brief Делит каждую строку на диагональный элемент.
+ * @param augmentedMatrix Расширенная матрица.
+ * @param n Размер матрицы.
+ * @param row Строка, которую нужно поделить на диагональный элемент.
+ */
+void divideRowByDiagonalElement(double augmentedMatrix[][2 * MAX_SIZE], int n, int row);
+/*
+ * @brief Извлекает обратную матрицу из расширенной матрицы.
+ * @param augmentedMatrix Расширенная матрица.
+ * @param inverseMatrix Обратная матрица.
+ * @param n Размер матрицы.
+ */
+void extractInverseMatrix(double augmentedMatrix[][2 * MAX_SIZE], double inverseMatrix[][MAX_SIZE], int n);
+/*
+ * @brief Находит обратную матрицу заданной матрицы.
+ * @param matrix Заданная матрица.
+ * @param n Размер матрицы.
+ */
+void findInverseMatrix(double matrix[][MAX_SIZE], int n);
 

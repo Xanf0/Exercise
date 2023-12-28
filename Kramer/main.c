@@ -4,27 +4,19 @@
 
 int main() {
     int n;
-    float a[MAX_SIZE][MAX_SIZE]; 
-    float b[MAX_SIZE]; 
+    double matrix[MAX_SIZE][MAX_SIZE];
 
-    printf("Enter the number of unknowns (maximum %d): ", MAX_SIZE);
+    printf("Enter the size of the matrix: ");
     scanf_s("%d", &n);
 
-    printf("Enter the coefficient matrix:\n");
-
+    printf("Enter the elements of the matrix:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            scanf_s("%f", &a[i][j]);
+            scanf_s("%lf", &matrix[i][j]);
         }
     }
 
-    printf("Enter the constant matrix:\n");
-
-    for (int i = 0; i < n; i++) {
-        scanf_s("%f", &b[i]);
-    }
-
-    solveEquation(a, b, n);
+    findInverseMatrix(matrix, n);
 
     return 0;
 }
